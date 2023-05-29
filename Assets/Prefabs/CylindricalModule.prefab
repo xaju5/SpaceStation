@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4751760285619572391}
   - component: {fileID: 4751760285619572389}
   - component: {fileID: 4751760285619572378}
+  - component: {fileID: -670557558656112116}
   m_Layer: 0
   m_Name: CylindricalModule
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40600a326be30244ab3df6c32020ae43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockDistance: 3
 --- !u!65 &4751760285619572378
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56,11 +58,27 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4751760285619572390}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-670557558656112116
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751760285619572390}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &4751760286181888552
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8611976566512266358, guid: c633810769fce874eadd287036f2d276, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8611976566512266358, guid: c633810769fce874eadd287036f2d276, type: 3}
       propertyPath: m_LocalRotation.x
@@ -251,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8611976566512266358, guid: c633810769fce874eadd287036f2d276, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8611976566512266358, guid: c633810769fce874eadd287036f2d276, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -263,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8611976566512266358, guid: c633810769fce874eadd287036f2d276, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8611976566512266359, guid: c633810769fce874eadd287036f2d276, type: 3}
       propertyPath: m_Name
