@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4751760285619572389}
   - component: {fileID: 4751760285619572378}
   - component: {fileID: -670557558656112116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CylindricalModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4751760285619572390}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.2, y: 1.2, z: 1.2}
@@ -221,6 +221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Socket (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8611976566512266359, guid: c633810769fce874eadd287036f2d276, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c633810769fce874eadd287036f2d276, type: 3}
 --- !u!4 &3923277126735360010 stripped
@@ -286,6 +290,10 @@ PrefabInstance:
     - target: {fileID: 8611976566512266359, guid: c633810769fce874eadd287036f2d276, type: 3}
       propertyPath: m_Name
       value: Socket
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611976566512266359, guid: c633810769fce874eadd287036f2d276, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c633810769fce874eadd287036f2d276, type: 3}

@@ -11,17 +11,20 @@ public class ModuleBehaviour : MonoBehaviour
 
     private bool isSelected;
     private bool isLocked;
+    private List<GameObject> attachedSokectList;
 
     private void Start()
     {
         isSelected = false;
         isLocked = false;
+        attachedSokectList = new();
     }
 
     private void OnMouseDown()
     {
         isSelected = true;
         ShowSockets(true);
+        DeattachAllSockects();
     }
 
     private void OnMouseDrag()
@@ -29,7 +32,7 @@ public class ModuleBehaviour : MonoBehaviour
         if (!isSelected) return;
         if (isLocked)
         {
-            checkLock();
+            CheckLock();
             return;
         }
 
@@ -53,10 +56,10 @@ public class ModuleBehaviour : MonoBehaviour
         if (!otherSocket.gameObject.CompareTag(SOCKET_TAG)) return;
 
         isLocked = true;
-        AttachSocket(otherSocket.transform.position);
+        AttachSocket(otherSocket.gameObject);
     }
 
-    private void checkLock()
+    private void CheckLock()
     {
         Vector3 distance = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z)) - transform.position;
         if(distance.magnitude >= lockDistance)
@@ -87,16 +90,33 @@ public class ModuleBehaviour : MonoBehaviour
         
     }
     
-    private void AttachSocket(Vector3 otherSocketPosition)
+    private void AttachSocket(GameObject otherGameObject)
     {
         foreach (Transform child in GetComponentInChildren<Transform>())
         {
-            Vector3 offset = otherSocketPosition - child.position;
-            if (offset.magnitude <= 1f)
+            Vector3 offset = otherGameObject.transform.position - child.position;
+            SocketBehaviour childSocket = child.GetComponent<SocketBehaviour>();
+            SocketBehaviour otherSocket = otherGameObject.GetComponent<SocketBehaviour>();
+
+            if (offset.magnitude <= 1f && !otherSocket.IsAttached() && !childSocket.IsAttached())
             {
+                childSocket.SetAttachedSocked(otherGameObject);
+                otherSocket.SetAttachedSocked(child.gameObject);
+                attachedSokectList.Add(child.gameObject);
+                attachedSokectList.Add(otherGameObject);
+
                 transform.position += offset;
                 break;
             }
         }
+    }
+
+    private void DeattachAllSockects()
+    {
+        foreach(GameObject socket in attachedSokectList)
+        {
+            socket.GetComponent<SocketBehaviour>().DeleteAttachedSocked();
+        }
+        attachedSokectList.Clear();
     }
 }
