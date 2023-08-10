@@ -55,9 +55,11 @@ public class UIImageBehaviour : MonoBehaviour, IBeginDragHandler, IDragHandler, 
     private void SpawnModule()
     {
         if (!this.canSpawnModule) return;
-        
+
         Vector3 mousePositionOnScreen = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
-        Instantiate(this.StationModule, mousePositionOnScreen, Quaternion.identity);
+        GameObject module = Instantiate(this.StationModule, mousePositionOnScreen, Quaternion.identity);
+        //TODO: Make the instantiated object to drag
+        //module.GetComponent<ModuleBehaviour>().ModuleSelection();
         this.canSpawnModule = false;
     }
 }

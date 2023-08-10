@@ -22,6 +22,11 @@ public class ModuleBehaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
+        ModuleSelection();
+    }
+
+    private void ModuleSelection()
+    {
         isSelected = true;
         ShowSockets(true);
         DeattachAllSockects();
@@ -44,6 +49,10 @@ public class ModuleBehaviour : MonoBehaviour
     }
     private void OnMouseUp()
     {
+        ModuleUnselection();
+    }
+
+    private void ModuleUnselection(){
         isSelected = false;
         ShowSockets(false);
         isLocked = false;
