@@ -46,6 +46,8 @@ public class ModuleBehaviour : MonoBehaviour
         {
             RotateSelectedModule();
         }
+        
+        DeleteModule();
     }
     private void OnMouseUp()
     {
@@ -127,5 +129,11 @@ public class ModuleBehaviour : MonoBehaviour
             socket.GetComponent<SocketBehaviour>().DeleteAttachedSocked();
         }
         attachedSokectList.Clear();
+    }
+
+    private void DeleteModule(){
+        if (transform.position.x < -9 && transform.position.y < -4){
+            Destroy(gameObject);
+        }
     }
 }
