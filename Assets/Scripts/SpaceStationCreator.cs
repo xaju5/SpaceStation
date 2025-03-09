@@ -26,7 +26,7 @@ public class SpaceStationCreator : MonoBehaviour
         RotateSpaceStation();
 
         Ray ray = creatorCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 10f, mountLayer))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f, mountLayer))
         {
             Mount mount = hitInfo.transform.GetComponent<Mount>();
             PlaceCurrentModule(mount);
@@ -94,6 +94,7 @@ public class SpaceStationCreator : MonoBehaviour
         copiedModule.transform.position = mount.transform.position;
         copiedModule.transform.rotation = calculateModuleRotation(mount);
         mount.SetMountedModule(copiedModule);
+        creatorCamera.GetComponent<CameraBehaviour>().SetCameraOffset(copiedModule.transform.position.magnitude);
     }
 
     private Quaternion calculateModuleRotation(Mount mount)
