@@ -31,7 +31,7 @@ public class Mount : MonoBehaviour
         SetMountTrigger(true);
     }
 
-    private void SetMountTrigger(bool isEnabled){
+    public void SetMountTrigger(bool isEnabled){
         meshRenderer.enabled = isEnabled;
         boxCollider.enabled = isEnabled;
     }

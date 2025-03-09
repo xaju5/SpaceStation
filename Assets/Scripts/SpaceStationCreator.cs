@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class SpaceStationCreator : MonoBehaviour
 {
+    static float RAY_LENGHT = 100f;
+    static float FOLLOW_MODULE_DISTANCE = 15f;
 
-    public Camera creatorCamera;
-    public LayerMask mountLayer;
-    public GameObject[] allModules;
-    public GameObject spaceStation;
+    [SerializeField] private Camera creatorCamera;
+    [SerializeField] private LayerMask mountLayer;
+    [SerializeField] private GameObject[] allModules;
+    [SerializeField] private GameObject spaceStation;
 
     private GameObject currentModule;
     private float currentModuleRotation;
@@ -26,7 +28,7 @@ public class SpaceStationCreator : MonoBehaviour
         RotateSpaceStation();
 
         Ray ray = creatorCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f, mountLayer))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, RAY_LENGHT, mountLayer))
         {
             Mount mount = hitInfo.transform.GetComponent<Mount>();
             PlaceCurrentModule(mount);
@@ -73,7 +75,7 @@ public class SpaceStationCreator : MonoBehaviour
 
     private void FollowPointer()
     {
-        currentModule.transform.position = creatorCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 6f));
+        currentModule.transform.position = creatorCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, FOLLOW_MODULE_DISTANCE));
         currentModule.transform.rotation = Quaternion.identity;
     }
 
@@ -90,12 +92,16 @@ public class SpaceStationCreator : MonoBehaviour
 
     private void MountCurrentModule(Mount mount)
     {
-        GameObject copiedModule = Instantiate(currentModule, spaceStation.transform);
-        copiedModule.transform.position = mount.transform.position;
-        copiedModule.transform.rotation = calculateModuleRotation(mount);
-        mount.SetMountedModule(copiedModule);
-        copiedModule.GetComponent<Module>().SetAttachedMount(mount);
-        creatorCamera.GetComponent<CameraBehaviour>().SetCameraOffset(copiedModule.transform.position.magnitude);
+        GameObject copiedModuleObject = Instantiate(currentModule, spaceStation.transform);
+        copiedModuleObject.transform.position = mount.transform.position;
+        copiedModuleObject.transform.rotation = calculateModuleRotation(mount);
+
+        mount.SetMountedModule(copiedModuleObject);
+        Module copiedModule = copiedModuleObject.GetComponent<Module>();
+        copiedModule.SetAttachedMount(mount);
+        copiedModule.EnableModuleMounts();
+
+        creatorCamera.GetComponent<CameraBehaviour>().SetCameraOffset(copiedModuleObject.transform.position.magnitude);
     }
 
     private Quaternion calculateModuleRotation(Mount mount)
