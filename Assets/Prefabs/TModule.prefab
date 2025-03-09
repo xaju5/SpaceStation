@@ -181,6 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6572828061480117898}
+  - component: {fileID: -6739796991268665809}
   m_Layer: 0
   m_Name: TModule
   m_TagString: Untagged
@@ -207,6 +208,18 @@ Transform:
   - {fileID: 5594432349627679989}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6739796991268665809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066963093260537245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b84ba2f5f8d624dbecc202b65b7620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7007258301516191848
 PrefabInstance:
   m_ObjectHideFlags: 0

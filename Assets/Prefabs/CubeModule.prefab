@@ -95,6 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4237232531272609313}
+  - component: {fileID: -145305338399000080}
   m_Layer: 0
   m_Name: CubeModule
   m_TagString: Untagged
@@ -124,6 +125,18 @@ Transform:
   - {fileID: 3128573576866310652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-145305338399000080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438647897776479505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b84ba2f5f8d624dbecc202b65b7620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &465852537226608946
 PrefabInstance:
   m_ObjectHideFlags: 0

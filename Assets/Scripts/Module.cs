@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class Module : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    private Mount attachedMount;
+
+    public void SetAttachedMount( Mount mount){
+        attachedMount = mount;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void RemoveAttachedMount(){
+        attachedMount = null;
+    }
+
+    public Mount GetAttachedMount(){
+        return attachedMount;
     }
 }

@@ -94,6 +94,7 @@ public class SpaceStationCreator : MonoBehaviour
         copiedModule.transform.position = mount.transform.position;
         copiedModule.transform.rotation = calculateModuleRotation(mount);
         mount.SetMountedModule(copiedModule);
+        copiedModule.GetComponent<Module>().SetAttachedMount(mount);
         creatorCamera.GetComponent<CameraBehaviour>().SetCameraOffset(copiedModule.transform.position.magnitude);
     }
 

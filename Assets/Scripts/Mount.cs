@@ -4,10 +4,12 @@ public class Mount : MonoBehaviour
 {
     private GameObject mountedModule;
     private MeshRenderer meshRenderer;
+    private BoxCollider boxCollider;
 
     void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     public void SetMountedModule(GameObject newModule)
@@ -16,7 +18,7 @@ public class Mount : MonoBehaviour
             Destroy(mountedModule);
         }
         mountedModule = newModule;
-        meshRenderer.enabled = false;
+        SetMountTrigger(false);
     }
 
     public GameObject GetMountedModule()
@@ -26,6 +28,11 @@ public class Mount : MonoBehaviour
 
     public void DestroyMountedModule(){
         Destroy(mountedModule);
-        meshRenderer.enabled = true;
+        SetMountTrigger(true);
+    }
+
+    private void SetMountTrigger(bool isEnabled){
+        meshRenderer.enabled = isEnabled;
+        boxCollider.enabled = isEnabled;
     }
 }
